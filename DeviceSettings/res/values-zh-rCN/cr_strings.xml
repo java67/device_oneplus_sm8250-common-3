@@ -64,4 +64,7 @@
     <string name="slider_toast_priority">免打扰模式 - 仅限优先打扰</string>
     <string name="slider_toast_silent">电话和通知将会静音</string>
 
+    <!-- Dolby Atmos -->
+    <string name="audio_title">声音</string>
+    <string name="dolby_title">杜比音效</string>
 </resources>

@@ -69,4 +69,7 @@
     <string name="slider_toast_priority">DND - Priority only</string>
     <string name="slider_toast_silent">Calls and notifications will be muted</string>
 
+    <!-- Dolby Atmos -->
+    <string name="audio_title">Audio</string>
+    <string name="dolby_title">Dolby Atmos</string>
 </resources>
