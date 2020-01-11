@@ -65,6 +65,10 @@
     <string name="slider_toast_silent">电话和通知将会静音</string>
 
     <!-- Dolby Atmos -->
-    <string name="audio_title">声音</string>
-    <string name="dolby_title">杜比音效</string>
+    <string name="audio_title">杜比音效</string>
+    <string name="dolby_title">配置选项</string>
+    <string name="dolby_summary">基于媒体内容配置声音输出</string>
+    <string name="enable_dolby_title">开启/关闭杜比音效</string>
+    <string name="enable_dolby_summary">开关需要重启才能生效！</string>
+    <string name="enable_dolby_info">说明：当杜比开启时，其他的音效调节程序将会被自动禁止</string>
 </resources>
