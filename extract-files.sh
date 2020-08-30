@@ -63,6 +63,9 @@ function blob_fixup() {
         system_ext/lib64/libwfdnative.so)
             sed -i "s/android.hidl.base@1.0.so/libhidlbase.so\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/" "${2}"
             ;;
+        product/vendor_overlay/30/lib/libgf_ud_hal.so|product/vendor_overlay/30/lib64/libgf_ud_hal.so)
+            sed -i "s|vendor.boot.verifiedbootstate|vendor.boot.fingerprintbstate|g" "${2}"
+            ;;
     esac
 }
 
