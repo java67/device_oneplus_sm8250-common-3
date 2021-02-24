@@ -15,7 +15,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 *
 */
-package org.lineageos.device.DeviceSettings;
+package org.havoc.device.DeviceSettings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -26,13 +26,13 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceViewHolder;
 
-public class HBMAutobrightnessThresholdPreference extends ProperSeekBarPreference {
+public class AutoHBMThresholdPreference extends ProperSeekBarPreference {
 
     private static int mMinVal = 0;
     private static int mMaxVal = 60000;
-    private static int mDefVal = 20000;
+    private static int mDefVal = 30000;
 
-    public HBMAutobrightnessThresholdPreference(Context context, AttributeSet attrs) {
+    public AutoHBMThresholdPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         mInterval = 1000;
@@ -44,7 +44,7 @@ public class HBMAutobrightnessThresholdPreference extends ProperSeekBarPreferenc
         mDefaultValueExists = true;
         mDefaultValue = mDefVal;
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-        mValue = Integer.parseInt(sharedPrefs.getString(DeviceSettings.KEY_HBM_AUTOBRIGHTNESS_THRESHOLD, "20000"));
+        mValue = Integer.parseInt(sharedPrefs.getString(DeviceSettings.KEY_AUTO_HBM_THRESHOLD, "30000"));
 
         setPersistent(false);
     }
@@ -52,6 +52,6 @@ public class HBMAutobrightnessThresholdPreference extends ProperSeekBarPreferenc
     @Override
     protected void changeValue(int newValue) {
         SharedPreferences.Editor prefChange = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-        prefChange.putString(DeviceSettings.KEY_HBM_AUTOBRIGHTNESS_THRESHOLD, String.valueOf(newValue)).commit();
+        prefChange.putString(DeviceSettings.KEY_AUTO_HBM_THRESHOLD, String.valueOf(newValue)).commit();
     }
 }

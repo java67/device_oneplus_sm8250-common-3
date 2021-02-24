@@ -13,20 +13,19 @@
      limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
           android:sharedUserId="android.uid.system"
-          package="org.lineageos.device.DeviceSettings"
-          android:versionCode="1"
-          android:versionName="1.0" >
+          package="org.havoc.device.DeviceSettings"
+          android:versionCode="2"
+          android:versionName="2.0" >
 
     <uses-permission android:name="android.permission.INJECT_EVENTS"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_DEVICE_CONFIG" />
 
     <uses-sdk
-        android:minSdkVersion="24" />
+        android:minSdkVersion="28"
+        android:targetSdkVersion="29" />
 
     <application
         android:icon="@drawable/ic_settings_device"
@@ -51,16 +50,18 @@
         </activity>
 
         <activity android:name=".DeviceSettings" />
-        <activity android:name=".KeyHandler" />
 
-        <receiver android:name="org.lineageos.device.DeviceSettings.Startup" >
+        <receiver 
+            android:name="org.havoc.device.DeviceSettings.Startup" 
+            android:enabled="true">
             <intent-filter android:priority="100" >
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
+        <!-- HBM tile -->
         <service
-            android:name="org.lineageos.device.DeviceSettings.HBMModeTileService"
+            android:name="org.havoc.device.DeviceSettings.HBMModeTileService"
             android:icon="@drawable/ic_hbm_tile"
             android:label="@string/tile_hbm_mode"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
@@ -68,15 +69,19 @@
                 <action
                     android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
-
         </service>
 
-        <service android:name="org.lineageos.device.DeviceSettings.AutoHighBrightnessModeService" />
-
-        <!-- Search Provider -->
+        <service android:name="org.havoc.device.DeviceSettings.HBMModeService"
+                 android:exported="false" />
+                 
+        <!-- Auto HBM service -->
+        <service android:name="org.havoc.device.DeviceSettings.AutoHBMService"
+		 android:exported="false" />
+                 
+        <!-- Search indexing -->
         <provider
             android:name=".ConfigPanelSearchIndexablesProvider"
-            android:authorities="org.lineageos.device"
+            android:authorities="org.havoc.device"
             android:multiprocess="false"
             android:grantUriPermissions="true"
             android:permission="android.permission.READ_SEARCH_INDEXABLES"

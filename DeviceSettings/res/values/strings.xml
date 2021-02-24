@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014-2017 The OmniROM Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <!-- Panel modes -->
+    <string name="device_title">OnePlus Settings</string>
+    <string name="device_summary">Adjust OnePlus specific device settings</string>
+    <string name="display_title">Display</string>
+    <string name="hbm_mode_summary"></string>
+    <string name="hbm_mode_title">High brightness mode</string>
+    <string name="auto_hbm_summary"></string>
+    <string name="auto_hbm_title">Automatic High brightness mode</string>
+    <string name="hbm_mode_warning">Long time usage of High brightness mode may damage your display</string>
+    <string name="auto_hbm_threshold_title">Automatic High brightness mode threshold (lux)</string>
+    <string name="auto_hbm_threshold_summary"></string>
+    <string name="tile_hbm_mode">High brightness modes</string>
+
+    <!-- Vibration slider -->
+    <string name="category_vibrator">Vibrator</string>
+    <string name="vib_strength_title_head">Strength</string>
+    <string name="vib_strength_summary_head">Define the strength of the vibrator</string>
+    <string name="vibration_warning">Setting strength too high may cause permanent hardware damage</string>
+
+    <!-- Log Tile -->
+    <string name="cannot_get_su">Action failed because of missing superuser access</string>
+
+    <!-- Dolby Atmos -->
+    <string name="audio_title">Dolby Atmos</string>
+    <string name="dolby_title">Configuration</string>
+    <string name="dolby_summary">Configure the audio output based on media content.</string>
+    <string name="enable_dolby_title">Enable/Disable Dolby Atmos</string>
+    <string name="enable_dolby_summary">Switching REQUIRES a reboot to take effect!</string>
+    <string name="enable_dolby_info">Note: With Dolby Atmos enabled, other EQ effects like MusicFX are disabled on all outputs.</string>
+</resources>

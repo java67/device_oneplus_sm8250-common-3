@@ -1,4 +1,4 @@
-package org.lineageos.device.DeviceSettings;
+package org.havoc.device.DeviceSettings;
 
 import android.app.KeyguardManager;
 import android.app.Service;
@@ -15,7 +15,7 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import androidx.preference.PreferenceManager;
 
-public class AutoHighBrightnessModeService extends Service {
+public class AutoHBMService extends Service {
     private static final String HBM_FILE = "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/hbm";
 
     private static boolean mAutoHBMActive = false;
@@ -56,7 +56,7 @@ public class AutoHighBrightnessModeService extends Service {
             KeyguardManager km =
                     (KeyguardManager) getSystemService(getApplicationContext().KEYGUARD_SERVICE);
             boolean keyguardShowing = km.inKeyguardRestrictedInputMode();
-            float threshold = Float.parseFloat(mSharedPrefs.getString(DeviceSettings.KEY_HBM_AUTOBRIGHTNESS_THRESHOLD, "20000"));
+            float threshold = Float.parseFloat(mSharedPrefs.getString(DeviceSettings.KEY_AUTO_HBM_THRESHOLD, "30000"));
             if (lux > threshold) {
                 if ((!mAutoHBMActive | !isCurrentlyEnabled()) && !keyguardShowing) {
                     mAutoHBMActive = true;

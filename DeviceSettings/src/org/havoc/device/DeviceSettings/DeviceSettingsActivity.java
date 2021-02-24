@@ -15,7 +15,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 *
 */
-package org.lineageos.device.DeviceSettings;
+package org.havoc.device.DeviceSettings;
 
 import android.app.Activity;
 import android.app.AlertDialog;

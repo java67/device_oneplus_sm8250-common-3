@@ -15,8 +15,9 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 *
 */
-package org.lineageos.device.DeviceSettings;
+package org.havoc.device.DeviceSettings;
 
+import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -24,25 +25,32 @@ import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.text.TextUtils;
 import androidx.preference.PreferenceManager;
+import android.util.Log;
+import java.util.List;
 
 public class Startup extends BroadcastReceiver {
 
+    private static final boolean DEBUG = false;
+
+    private static final String TAG = "SettingsOnBoot";
+    private boolean mSetupRunning = false;
     private boolean mHBM = false;
+    private Context settingsContext = null;
+    private Context mContext;
 
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
-
-        VibratorStrengthPreference.restore(context);
+        if (DEBUG) 
+            Log.d(TAG, "Received boot completed intent");
 
         boolean enabled = false;
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-
         enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_HBM_SWITCH, false);
         if (enabled) {
-        mHBM = true;
         restore(HBMModeSwitch.getFile(), enabled);
-        }
+               }
 
+        VibratorStrengthPreference.restore(context);
         Utils.enableService(context);
     }
 
@@ -51,7 +59,7 @@ public class Startup extends BroadcastReceiver {
             return;
         }
         if (enabled) {
-            Utils.writeValue(file, mHBM ? "5" : "1");
+            Utils.writeValue(file, "1");
         }
     }
 
