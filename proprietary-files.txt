@@ -1144,6 +1144,12 @@ vendor/firmware/Version_Alert_RTP.bin
 vendor/firmware/VZW_Alrwave_RTP.bin
 vendor/firmware/wentai24k_rtp.bin
 
+# Vibrator - OnePlus
+system_ext/etc/vibrator_effect_map.xml
+vendor/bin/hw/vendor.oneplus.hardware.lmvibrator@1.0-service
+vendor/etc/init/vendor.oneplus.hardware.lmvibrator@1.0-service.rc
+vendor/lib64/vendor.oneplus.hardware.lmvibrator@1.0.so
+
 # VPP
 vendor/bin/vppservice
 vendor/etc/configstore/vpp.configstore.xml

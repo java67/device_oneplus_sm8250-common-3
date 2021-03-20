@@ -335,6 +335,7 @@
             <name>ILinearMotorVibrator</name>
             <instance>default</instance>
         </interface>
+        <fqname>@1.0::ILinearMotorVibrator/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.oneplus.hardware.param</name>
