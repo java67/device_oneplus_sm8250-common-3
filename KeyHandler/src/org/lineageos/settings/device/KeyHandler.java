@@ -44,46 +44,30 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
     public KeyEvent handleKeyEvent(KeyEvent event) {
-        final int scanCode = event.getScanCode();
-        final int currentRingerMode = mAudioManager.getRingerModeInternal();
+        int scanCode = event.getScanCode();
 
         switch (scanCode) {
             case MODE_NORMAL:
-                if (currentRingerMode != AudioManager.RINGER_MODE_NORMAL) {
-                    doHapticFeedback(VibrationEffect.EFFECT_DOUBLE_CLICK);
-                    mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_NORMAL);
-                } else {
-                    return event;
-                }
+                mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_NORMAL);
                 break;
             case MODE_VIBRATION:
-                if (currentRingerMode != AudioManager.RINGER_MODE_VIBRATE) {
-                    doHapticFeedback(VibrationEffect.EFFECT_THUD);
-                    mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_VIBRATE);
-                } else {
-                    return event;
-                }
+                mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_VIBRATE);
                 break;
             case MODE_SILENCE:
-                if (currentRingerMode != AudioManager.RINGER_MODE_SILENT) {
-                    doHapticFeedback(VibrationEffect.EFFECT_POP);
-                    mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_SILENT);
-                } else {
-                    return event;
-                }
+                mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_SILENT);
                 break;
             default:
                 return event;
         }
+        doHapticFeedback();
 
         return null;
     }
 
-    private void doHapticFeedback(int effect) {
-        if (mVibrator != null) {
-            if (mVibrator.hasVibrator()) {
-                mVibrator.vibrate(VibrationEffect.get(effect));
-            }
+    private void doHapticFeedback() {
+        if (mVibrator != null && mVibrator.hasVibrator()) {
+            mVibrator.vibrate(VibrationEffect.createOneShot(50,
+                    VibrationEffect.DEFAULT_AMPLITUDE));
         }
     }
 }
